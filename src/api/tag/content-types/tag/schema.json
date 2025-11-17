@@ -1,0 +1,31 @@
+{
+    "kind": "collectionType",
+    "collectionName": "tags",
+    "info": {
+        "singularName": "tag",
+        "pluralName": "tags",
+        "displayName": "Tag",
+        "description": "Reusable keywords"
+    },
+    "options": {
+        "draftAndPublish": true
+    },
+    "attributes": {
+        "label": {
+            "type": "string",
+            "required": true
+        },
+        "slug": {
+            "type": "uid",
+            "targetField": "label",
+            "required": true,
+            "unique": true
+        },
+        "posts": {
+            "type": "relation",
+            "relation": "manyToMany",
+            "target": "api::blog-post.blog-post",
+            "inversedBy": "tags"
+        }
+    }
+}
